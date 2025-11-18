@@ -1,25 +1,41 @@
-﻿int[] numbers = { 3, 3, 3, 1, 2, 1, 2, 3, 3, 2, 2, 1, 3, 1, 3, 1, 2, 2, 3, 3, 3 };
-int value = 0;
-int count = 0;
+﻿int[] numbers = {  };
 
-for (int i = 0; i < numbers.Length; i++)
+string result = "";
+if (!numbers.Any())
 {
-    int currentCount = 1;
+    result = "Array is empty";
+}
+else
+{
+    Console.Write("Enter index: ");
+    int index;
 
-    for(int j  = i+ 1; j < numbers.Length; j++)
+    while (!(int.TryParse(Console.ReadLine(), out index) && index <= numbers.Length - 1))
     {
-        if(numbers[i] == numbers[j])
+        Console.WriteLine($"Enter valid index (<= {numbers.Length - 1})");
+    }
+
+    if (index == 0)
+    {
+        if (numbers.Length > 1)
         {
-            currentCount++;
+            result = numbers[index] > numbers[index + 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
+        }
+        else
+        {
+            result = "No neighbor(s) to check";
         }
     }
-    
-    if(currentCount > count)
+    else if (index == numbers.Length - 1)
     {
-        count = currentCount;
-        value = numbers[i];
-
+        result = numbers[index] > numbers[index - 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
     }
+    else
+    {
+        result = numbers[index] > numbers[index - 1] && numbers[index] > numbers[index + 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
+    }
+
 }
 
-Console.WriteLine($"{value} appears {count} times");
+
+Console.WriteLine(result);
