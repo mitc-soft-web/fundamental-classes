@@ -1,32 +1,41 @@
-﻿int[] arr1 = { 1, 2, 3, 4, 5, 6, 7 };
-int[] arr2 = { 1, 2, 3, 4};
+﻿Console.Write("Enter the length for row: ");
+int rows;
 
-int countElement = 0;
-for(int i = 0; i < arr1.Length; i++)
+while(!int.TryParse(Console.ReadLine(), out rows))
 {
-    if (arr2.Contains(arr1[i])) continue;
-    countElement++;
+    Console.WriteLine("Enter valid value for rows!");
 }
 
-int[] newArr = new int[arr2.Length + countElement];
+Console.Write("Enter the length for column: ");
+int columns;
 
-for(int i = 0; i < arr2.Length; i++)
+while (!int.TryParse(Console.ReadLine(), out columns))
 {
-    newArr[i] = arr2[i];
+    Console.WriteLine("Enter valid value for colums!");
 }
 
-int index = arr2.Length;
+int[,] arr = new int[rows, columns];
 
-for(int i = 0; i < arr1.Length; i++)
+Console.WriteLine("Enter element for rows and colums...");
+for (int i = 0; i < rows; i++)
 {
-    if(arr2.Contains(arr1[i])) continue;
-    if (newArr.Contains(arr1[i])) continue;
-    newArr[index] = arr1[i];
-    index++;
+    for(int j = 0; j < columns; j++)
+    {
+        Console.Write($"arr[{i}, {j}]: ");
+        arr[i, j] = Convert.ToInt32(Console.ReadLine());
+    }
 }
 
-foreach(var num in newArr)
+int sum = 0;
+for (int i = 0; i < rows; i++)
 {
-    if (num == 0) continue;
-    Console.WriteLine(num);
+    for (int j = 0; j < columns; j++)
+    {
+        Console.Write(arr[i, j] + " ");
+        sum += arr[i, j];
+
+    }
+    Console.WriteLine();
 }
+
+Console.WriteLine($"The sum of the {rows} x {columns} matrix = {sum}");
