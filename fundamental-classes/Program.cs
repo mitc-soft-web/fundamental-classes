@@ -1,41 +1,32 @@
-﻿int[] numbers = {  };
+﻿int[] arr1 = { 1, 2, 3, 4, 5, 6, 7 };
+int[] arr2 = { 1, 2, 3, 4};
 
-string result = "";
-if (!numbers.Any())
+int countElement = 0;
+for(int i = 0; i < arr1.Length; i++)
 {
-    result = "Array is empty";
-}
-else
-{
-    Console.Write("Enter index: ");
-    int index;
-
-    while (!(int.TryParse(Console.ReadLine(), out index) && index <= numbers.Length - 1))
-    {
-        Console.WriteLine($"Enter valid index (<= {numbers.Length - 1})");
-    }
-
-    if (index == 0)
-    {
-        if (numbers.Length > 1)
-        {
-            result = numbers[index] > numbers[index + 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
-        }
-        else
-        {
-            result = "No neighbor(s) to check";
-        }
-    }
-    else if (index == numbers.Length - 1)
-    {
-        result = numbers[index] > numbers[index - 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
-    }
-    else
-    {
-        result = numbers[index] > numbers[index - 1] && numbers[index] > numbers[index + 1] ? "The element is greater than its neighbor" : "The element is not greater than its neighbor";
-    }
-
+    if (arr2.Contains(arr1[i])) continue;
+    countElement++;
 }
 
+int[] newArr = new int[arr2.Length + countElement];
 
-Console.WriteLine(result);
+for(int i = 0; i < arr2.Length; i++)
+{
+    newArr[i] = arr2[i];
+}
+
+int index = arr2.Length;
+
+for(int i = 0; i < arr1.Length; i++)
+{
+    if(arr2.Contains(arr1[i])) continue;
+    if (newArr.Contains(arr1[i])) continue;
+    newArr[index] = arr1[i];
+    index++;
+}
+
+foreach(var num in newArr)
+{
+    if (num == 0) continue;
+    Console.WriteLine(num);
+}
