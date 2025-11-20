@@ -1,36 +1,39 @@
-﻿Console.Write("Enter length for layer: ");
-int layers;
+﻿Console.Write("Enter layers: ");
+int layers = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Enter the length for row: ");
-int rows;
+Console.Write("Enter rows: ");
+int rows = Convert.ToInt32(Console.ReadLine());
 
-while(!int.TryParse(Console.ReadLine(), out rows))
+Console.Write("Enter columns: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+
+int[,,] threeDArray = new int[layers, rows, columns];
+
+
+for(int  i = 0; i < layers; i++)
 {
-    Console.WriteLine("Enter valid value for rows!");
-}
-
-Console.Write("Enter the length for column: ");
-int columns;
-
-while (!int.TryParse(Console.ReadLine(), out columns))
-{
-    Console.WriteLine("Enter valid value for colums!");
-}
-
-
-int[,] arr = new int[rows, columns];
-
-Console.WriteLine("Enter element for rows and colums...");
-
-    for (int i = 0; i < rows; i++)
+    Console.WriteLine($"Elements for layer {i}");
+    for(int j = 0; j < rows; j++)
     {
-        for (int j = 0; j < columns; j++)
+        for(int k = 0; k < columns; k++)
         {
-            Console.Write($"arr[{i}, {j}]: ");
-            arr[i, j] = Convert.ToInt32(Console.ReadLine());
+            Console.Write($"3Darray[{j}, {k}]: ");
+            threeDArray[i, j, k] = Convert.ToInt32(Console.ReadLine());
         }
     }
+}
 
+for (int i = 0; i < layers; i++)
+{
+    for (int j = 0; j < rows; j++)
+    {
+        for (int k = 0; k < columns; k++)
+        {
+            Console.Write(threeDArray[i, j, k] + " ");
 
-
-
+        }
+        
+        Console.WriteLine();
+    } 
+    Console.WriteLine();
+}
