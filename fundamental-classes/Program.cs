@@ -1,39 +1,41 @@
-﻿Console.Write("Enter layers: ");
-int layers = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Enter rows: ");
+﻿Console.Write("Enter the row size of the jagged array: ");
 int rows = Convert.ToInt32(Console.ReadLine());
 
-Console.Write("Enter columns: ");
-int columns = Convert.ToInt32(Console.ReadLine());
+int[][] jaggedArray = new int[rows][];
 
-int[,,] threeDArray = new int[layers, rows, columns];
+int sum = 0;
 
-
-for(int  i = 0; i < layers; i++)
+Console.WriteLine("Enter the size(s) of the array for each row: ");
+for(int i = 0; i < jaggedArray.Length; i++)
 {
-    Console.WriteLine($"Elements for layer {i}");
-    for(int j = 0; j < rows; j++)
+    Console.Write($"row {i + 1} length: ");
+    int length = Convert.ToInt32(Console.ReadLine());
+    jaggedArray[i] = new int[length];
+
+    for(int j = 0; j < jaggedArray[i].Length; j++)
     {
-        for(int k = 0; k < columns; k++)
-        {
-            Console.Write($"3Darray[{j}, {k}]: ");
-            threeDArray[i, j, k] = Convert.ToInt32(Console.ReadLine());
-        }
+        Console.Write($"row[{j}]: ");
+        jaggedArray[i][j] = Convert.ToInt32(Console.ReadLine());
+        sum += jaggedArray[i][j];
     }
 }
+Console.WriteLine(sum);
 
-for (int i = 0; i < layers; i++)
+
+//for(int i = 0; i < jaggedArray.Length; i++)
+//{
+//    for(int j = 0; j < jaggedArray[i].Length; j++)
+//    {
+//        Console.Write(jaggedArray[i][j] + " ");
+//    }
+//    Console.WriteLine();
+//}
+
+foreach(var row in jaggedArray)
 {
-    for (int j = 0; j < rows; j++)
+    foreach(var value in row)
     {
-        for (int k = 0; k < columns; k++)
-        {
-            Console.Write(threeDArray[i, j, k] + " ");
-
-        }
-        
-        Console.WriteLine();
-    } 
+        Console.Write(value + " ");
+    }
     Console.WriteLine();
 }
