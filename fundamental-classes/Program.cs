@@ -1,175 +1,63 @@
-﻿//Random random  = new Random();
-//int correctGuessNumber = random.Next(1, 10);
+﻿//Console.Write("Enter value for x: ");
+//int x = int.Parse(Console.ReadLine()!);
 
-//Console.Write("Guess a number between 1 and 10: ");
-//int guess = int.Parse(Console.ReadLine()!);
+//Console.Write("Enter value for y: ");
+//int y = int.Parse(Console.ReadLine()!);
 
-//string guessResult = "";
+//Console.WriteLine(AddNumbers(x, y));
 
-//if(guess == correctGuessNumber)
+
+//static int AddNumbers(int a, int b)
 //{
-//   guessResult = "Correct, You win!";
-//}
-//else if(correctGuessNumber - guess <= 2 )
-//{
-//    guessResult = "So close!";
-//}
-//else
-//{
-//       guessResult = $"Wrong! The correct number was {correctGuessNumber}. Try again!";
-
+//    return a + b;
 //}
 
-//Console.WriteLine(guessResult);
+//string firstName = "John";
+//string lastName = "Doe";
+//string middleName = "Michael";
 
+//DisplayFullName(firstName, lastName, middleName);
 
-//for(int i = 1; i <= 50; i++)
+//static void DisplayFullName(string firstName, string lastName, string middleName)
 //{
-//    if(i % 3 == 0)
-//    {
-//        Console.WriteLine("Fizz");
-//    }
-//    else if(i % 5 == 0)
-//    {
-//        Console.WriteLine("Buzz");
-//    }
-//    else if(i % (3 * 5) == 0)
-//    {
-//        Console.WriteLine("FizzBuzz");
-//    }
-//    else if(i % 2 == 0)
-//    {
-//        Console.WriteLine("Even");
-//    }
-//    else
-//    {
-//        Console.WriteLine(i);
-//    }
+//    Console.WriteLine($"{firstName} {middleName} {lastName}");
 //}
 
+//int[] numbers = new int[7];
 
-//Q.5
-//Console.Write("Enter length of rows: ");
-//int rows = int.Parse(Console.ReadLine()!);
+//AddValuesToArray(numbers);
+//Console.WriteLine($"The sum of the array values is: {CalculateSum(numbers)}");
 
-//Console.Write("Enter length of columns: ");
-//int columns = int.Parse(Console.ReadLine()!);
-
-//char[,] battleShip = new char[rows, columns];
-
-
-//for(int i = 0; i < rows; i++)
+//static int[] AddValuesToArray(int[] arrayNumbers)
 //{
-//    for(int j = 0; j < columns; j++)
+//    for (int i = 0; i < arrayNumbers.Length; i++)
 //    {
-//        Console.Write($"BattleShip[{i}]: ");
-//        battleShip[i, j] = char.Parse(Console.ReadLine()!.ToUpper());
+//        Console.Write($"ArrayNumber[{i}]: ");
+//        arrayNumbers[i] = int.Parse(Console.ReadLine()!);
 //    }
+
+//    return arrayNumbers;
 //}
 
-//for(int i = 0; i < rows; i++)
+//static int CalculateSum(int[] numbers)
 //{
-//    for(int j = 0; j < columns; j++)
+//    int sum = 0;
+//    for(int i = 0; i < numbers.Length; i++)
 //    {
-//        if (battleShip[i, j] == 'B') Console.WriteLine("Hit!");
-//        Console.WriteLine("Miss!");
+//        sum += numbers[i];
 //    }
-//    Console.WriteLine();
+//    return sum;
 //}
 
-//Q.7
-//int[,,] threeDArray = new int[3, 3, 3];
+using fundamental_classes;
 
+//string word = "mummy";
 
-//for(int i = 0; i < threeDArray.GetLength(0); i++)
-//{
-//    Console.WriteLine($"Layer {i + 1}");
-//    for(int j = 0; j < threeDArray.GetLength(1); j++)
-//    {
-//        for(int k = 0; k < threeDArray.GetLength(2); k++)
-//        {
-//            Console.Write($"3DArray[{i}, {j}]: ");
-//            threeDArray[i, j, k] = int.Parse(Console.ReadLine()!);
+//Palindrome palindrome = new Palindrome();
 
-//        }
-//    }
-//}
+//Console.WriteLine($"Is the word '{word}' a palindrome? {palindrome.isPalindrome(word)}");
 
-//int evenCount = 0;
-//int oddCount = 0;
-//int totalCount = 0;
+PrintDigit printDigit = new PrintDigit();
+int digits = 7896590;
+Console.WriteLine(printDigit.PrintLastDigitInWords(digits));
 
-//for(int i = 0; i < threeDArray.GetLength(0); i++)
-//{
-//    for(int j = 0; j < threeDArray.GetLength(1); j++)
-//    {
-//        for (int k = 0;k < threeDArray.GetLength(2); k++)
-//        {
-//            if (threeDArray[i, j, k] % 2 == 0) evenCount++;
-//            if (threeDArray[i, j, k] % 2 != 0) oddCount++;
-//            totalCount = evenCount + oddCount;
-//        }
-//    }
-//}
-
-//Console.WriteLine($"We have {evenCount} even numbers\nWe have {oddCount} odd numbers\nand their total is {totalCount}");
-
-
-//Q.9
-
-double[][] scores =
-{
-    new double[] { 60, 89.5, 70, 100, 100, 90, 99, 98 },
-    new double[] {79, 80, 88.7, 70, 55 },
-    new double[] {95, 98.99, 50, 50, 45, 39, 45 }
-};
-
-double averageClassAScore = 0;
-double averageScoreBScore = 0;
-double averageScoreCScore = 0;
-double averageOverallScore = averageClassAScore;
-double totalScore = 0;
-double overallScore = 0;
-
-char bestClass = 'A';
-
-
-for (int i = 0; i < scores.Length; i++)
-{
-    for(int j = 0; j < scores[i].Length; j++)
-    {
-        if(i == 0)
-        {
-            totalScore += scores[i][j];
-            averageClassAScore = Math.Round(totalScore / scores[i].Length);
-        }
-        if(i == 1)
-        {
-            totalScore += scores[i][j];
-            averageScoreBScore = Math.Round(totalScore / scores[i].Length);
-        }
-        if(i == 2)
-        {
-            totalScore += scores[i][j];
-            averageScoreCScore = Math.Round(totalScore / scores[i].Length);
-        }
-        if(averageScoreBScore > averageOverallScore)
-        {
-            averageOverallScore = averageScoreBScore;
-            bestClass = 'B';
-        }
-        else if(averageScoreCScore > averageOverallScore)
-        {
-            averageOverallScore = averageScoreCScore;
-            bestClass = 'C';
-        }
-        if (scores[i][j] > overallScore)
-        {
-            overallScore = scores[i][j];
-
-        }
-
-}
-    }
-
-Console.WriteLine($"Class A Average Score: {averageClassAScore}\nClass B Average Score: {averageScoreBScore}\nClass C Average Score: {averageScoreCScore}\nThe Best Class is Class {bestClass}");
