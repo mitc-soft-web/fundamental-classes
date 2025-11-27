@@ -1,63 +1,24 @@
-﻿//Console.Write("Enter value for x: ");
-//int x = int.Parse(Console.ReadLine()!);
+﻿int[] p1 = { -1, 5, 3 };
+int[] p2 = { -5, 2 };
+int[] p3 = { -4, 2 };
 
-//Console.Write("Enter value for y: ");
-//int y = int.Parse(Console.ReadLine()!);
-
-//Console.WriteLine(AddNumbers(x, y));
+int[] result = Polynomia(p1, p2, p3);
+Console.WriteLine(string.Join(" ", result));
 
 
-//static int AddNumbers(int a, int b)
-//{
-//    return a + b;
-//}
+static int[] Polynomia(int[] p1, int[] p2, int[] p3)
+{
+    int maxLength = Math.Max(p1.Length, Math.Max(p2.Length, p3.Length));
+    int[]sum = new int[maxLength];
 
-//string firstName = "John";
-//string lastName = "Doe";
-//string middleName = "Michael";
+    for(int i = 0; i< maxLength; i++)
+    {
+        int c1 = i < p1.Length ? p1[i] : 0;
+        int c2 = i < p2.Length ? p2[i] : 0;
+        int c3 = i < p3.Length ? p3[i] : 0;
 
-//DisplayFullName(firstName, lastName, middleName);
+        sum[i] = c1 + c2 + c3;
+    }
 
-//static void DisplayFullName(string firstName, string lastName, string middleName)
-//{
-//    Console.WriteLine($"{firstName} {middleName} {lastName}");
-//}
-
-//int[] numbers = new int[7];
-
-//AddValuesToArray(numbers);
-//Console.WriteLine($"The sum of the array values is: {CalculateSum(numbers)}");
-
-//static int[] AddValuesToArray(int[] arrayNumbers)
-//{
-//    for (int i = 0; i < arrayNumbers.Length; i++)
-//    {
-//        Console.Write($"ArrayNumber[{i}]: ");
-//        arrayNumbers[i] = int.Parse(Console.ReadLine()!);
-//    }
-
-//    return arrayNumbers;
-//}
-
-//static int CalculateSum(int[] numbers)
-//{
-//    int sum = 0;
-//    for(int i = 0; i < numbers.Length; i++)
-//    {
-//        sum += numbers[i];
-//    }
-//    return sum;
-//}
-
-using fundamental_classes;
-
-//string word = "mummy";
-
-//Palindrome palindrome = new Palindrome();
-
-//Console.WriteLine($"Is the word '{word}' a palindrome? {palindrome.isPalindrome(word)}");
-
-PrintDigit printDigit = new PrintDigit();
-int digits = 7896590;
-Console.WriteLine(printDigit.PrintLastDigitInWords(digits));
-
+    return sum;
+}
