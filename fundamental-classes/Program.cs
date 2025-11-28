@@ -1,24 +1,104 @@
-﻿int[] p1 = { -1, 5, 3 };
-int[] p2 = { -5, 2 };
-int[] p3 = { -4, 2 };
+﻿////string str = "I love you!";
 
-int[] result = Polynomia(p1, p2, p3);
-Console.WriteLine(string.Join(" ", result));
+////Console.WriteLine(ReverseString(str));
 
 
-static int[] Polynomia(int[] p1, int[] p2, int[] p3)
+////static string ReverseString(string str)
+////{
+////    string result = "";
+////    for(int i = str.Length - 1; i >= 0; i--)
+////    {
+////        result += str[i];
+////    }
+////    return result;
+////}
+
+//Console.Write("Enter first number: ");
+//int a;
+
+//while(!int.TryParse(Console.ReadLine(), out a))
+//{
+//    Console.Write("Enter valid input: ");
+//}
+
+//Console.Write("Enter operator (e.g (+, -, *, /): ");
+//char op;
+
+//while (!(char.TryParse(Console.ReadLine(), out op) && op != '+' || op != '-' || op != '*' || op != '/'))
+//{
+//    Console.Write("Enter valid operator: ");
+//}
+
+//Console.Write("Enter second number: ");
+//int b;
+
+//while (!int.TryParse(Console.ReadLine(), out b))
+//{
+//    Console.Write("Enter valid input: ");
+//}
+
+
+//switch (op)
+//{
+//    case '+':
+//        Console.WriteLine(Add(a, b)); break;
+//    case '-':
+//        Console.WriteLine(Sub(a, b)); break;
+//    case '*':
+//        Console.WriteLine(Mult(a, b)); break;
+//    case '/':
+//        Console.WriteLine(Div(a, b)); break;
+//    default:
+//        Console.WriteLine("Invalid operator"); break;
+//}
+
+//static double Add(double a, double b)
+//{
+//    return a + b; 
+//}
+
+//static double Mult(double a, double b)
+//{
+//    return a * b;
+//}
+
+//static double Sub(double a, double b)
+//{
+//    return a - b;
+//}
+
+//static double Div(double a, double b)
+//{
+//    return a / b;
+//}
+
+static string CheckPasswordStrength(string password)
 {
-    int maxLength = Math.Max(p1.Length, Math.Max(p2.Length, p3.Length));
-    int[]sum = new int[maxLength];
+    string result = "";
+    bool isUpper = false;
+    bool isLower = false;
+    bool isDigit = false;
+    bool hasSymbol = false;
+    int minimumLength = 8;
 
-    for(int i = 0; i< maxLength; i++)
+    foreach(var c in password)
     {
-        int c1 = i < p1.Length ? p1[i] : 0;
-        int c2 = i < p2.Length ? p2[i] : 0;
-        int c3 = i < p3.Length ? p3[i] : 0;
-
-        sum[i] = c1 + c2 + c3;
+        if(char.IsUpper(c)) isUpper = true;
+        if(char.IsLower(c)) isLower = true;
+        if(char.IsDigit(c)) isDigit = true;
+        if(!char.IsLetterOrDigit(c)) hasSymbol = true;
     }
-
-    return sum;
+    if(password.Length >= minimumLength && isLower && isUpper && isDigit && hasSymbol)
+    {
+        result = "Strong";
+    }
+    else if(password.Length >= minimumLength && (isUpper || isLower) && isDigit) result = "Medium";
+    else
+    {
+        result = "Weak";
+    }
+    return result;
 }
+
+string password = "Abass1";
+Console.WriteLine(CheckPasswordStrength(password));
